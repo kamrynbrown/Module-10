@@ -2,12 +2,9 @@
 import sys
 
 for line in sys.stdin:
-  should_encode = "encode" in encryption_option.lower()
-  cypher_number = int(input("What is your cypher number? "))
-  message = input("What is your message? ")
+  cypher_number = sys.argv
   encoded_message = ""
-  if should_encode:
-      for char in message:
+      for char in line:
           if ord(char) >=65 and ord(char)<=90:
               next_char_index = ord(char) + cypher_number
               #if the index character is more than 90 we use the overflow, which is 90 minus the index character, that gives us the number that needs to be added to "A" index to continue from the beginning of the alphabet
@@ -24,7 +21,3 @@ for line in sys.stdin:
           else:
               encoded_message += char
       print(encoded_message)
-  else:
-      # Print a nice notice that we only support encrypt/decrypt
-      # Your code here!
-      print("We only support encoding and decoding, sorry!")
